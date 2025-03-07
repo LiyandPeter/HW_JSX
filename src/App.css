@@ -1,42 +1,371 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+    background-color: #ffedd5; /* 確認背景色與兩個頁面一致 */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    width: 100%; 
+}
+header{
+    display: flex;
+    background-color: #ffd9b0;
+    align-items: center;   
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:90px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+h1{
+    color: #9b4e00;
+    font-size: 42px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.logo{
+    display: flex;
+    margin-left: 5%;
+    margin-right: 10%;
+    align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-links {
+    justify-content: center;
+    display: flex;               /* 使鏈結水平排列 */
+    gap: 100px;                    /* 每個鏈結之間的間距 */
+}
+
+.nav-links a {
+    color: #9b4e00;                  /* 鏈結文字顏色 */
+    text-decoration: none;        /* 移除下劃線 */
+    transition: color 0.4s;       /* 增加顏色變化的過渡效果 */
+}
+
+.header-nav a{
+    color: #9b4e00;                  /* 鏈結文字顏色 */
+    text-decoration: none;        /* 移除下劃線 */
+    transition: color 0.4s; 
+}
+
+.header-nav {
+    display: flex;               /* 使鏈結水平排列 */
+    gap: 50px;                    /* 每個鏈結之間的間距 */
+    position: absolute;
+    right: 0;
+    margin-right: 5%;
+    justify-content: center;        /* 垂直置中 */
+    align-items: center;   
+}
+
+.nav-item {
+    display: flex;                      /* 使圖標和文字垂直排列 */
+    flex-direction: column;
+    align-items: center;                        /* 文字與圖標顏色 */
+    text-decoration: none;              /* 移除下劃線 */
+    font-size: 16px;                    /* 設定文字大小 */
+    transition: color 0.4s;             /* 增加過渡效果 */
+}
+
+.nav-item:hover {
+    color: #df0303;
+    transform: scale(1.5); 
+}
+
+.nav-item img {
+    width: 24px;                        /* 設定圖片圖標大小 */
+    height: 24px;
+    margin-bottom: 3px;                 /* 圖片與文字之間的距離 */
+    transition: transform 0.4s;         /* 增加過渡效果 */
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+/* 輪播容器的樣式 */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 90px); /* 設置高度為視口高度減去 Header 高度 */
+    margin-top: 90px; /* 使 Carousel 從 Header 下方開始 */
+    overflow: hidden;
   }
-  to {
-    transform: rotate(360deg);
+  
+  /* 單張圖片樣式 */
+  .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease-in-out; /* 平滑的過渡效果 */
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 90px); /* 視窗高度減去 header 高度 */
+    margin-top: 90px; /* 避免內容被 header 遮擋 */
+    background-color: #ffedd5; /* 與背景一致 */
 }
 
-.card {
-  padding: 2em;
+/* 左右分區容器 */
+.auth-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 80%; /* 增加占比 */
+    max-width: 900px; /* 限制最大寬度 */
+    height: 70%; /* 占視窗高度的 70% */
 }
 
-.read-the-docs {
-  color: #888;
+/* 登錄部分樣式 */
+.login-section, .register-section {
+    flex: 1; /* 左右平分 */
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.login-section {
+    background-color: #ffd9b0;
+}
+
+.register-section {
+    background-color: #ffe4c7;
+}
+
+/* 標題樣式 */
+.login-section h2, .register-section h2 {
+    font-size: 28px;
+    color: #9b4e00;
+    margin-bottom: 1em;
+}
+
+/* 表單樣式 */
+.login-section form, .register-section form {
+    width: 80%;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 0.5em;
+    color: #333333;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #9b4e00;
+    color: #ffffff;
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #df0303;
+}
+
+/* 對於小螢幕的響應式樣式 */
+@media (max-width: 768px) {
+    .auth-container {
+        flex-direction: column; /* 垂直排列 */
+        height: auto; /* 自動調整高度 */
+    }
+    
+    .login-section, .register-section {
+        flex: none; /* 防止內容被壓縮 */
+        width: 100%; /* 每個部分占滿寬度 */
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+/* 搜尋區域 */
+#searchContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.cancel-button {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cancel-button img {
+    width: 30px;
+    cursor: pointer;
+}
+
+#searchInput {
+    width: 66%; /* 長度為螢幕的 2/3 */
+    padding: 15px 20px;
+    border: 2px solid #f6da29db;
+    border-radius: 30px;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(241, 208, 41, 0.734);
+    outline: none;
+    text-align: center;
+    background: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+#searchInput:focus {
+    border-color: #b59f12e0;
+    background: #f0f8ff;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), inset 0 0 12px rgba(205, 182, 11, 0.6);
+}
+
+#searchInput::placeholder {
+    color: #aaa;
+    font-style: italic;
+    font-size: 16px;
+}
+
+/* 動態效果 */
+#searchInput:hover {
+    transform: scale(1.02);
+}
+
+.cancel-button img:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+/* 基本樣式調整 */
+body {
+    background-color: #ffedd5; /* 背景色 */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    width: 100%; 
+    box-sizing: border-box; /* 確保 padding 和 margin 不影響總寬度 */
+    overflow-x: hidden; /* 禁止水平滾動 */
+}
+
+header {
+    display: flex;
+    background-color: #ffd9b0;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 1000; /* 確保導覽列位於最上層 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    margin: 100px 20px 20px; /* 確保內容不被導覽列遮住，左右保留 20px 間距 */
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------*/
+/* 確保頁面滾動正常 */
+body, html {
+    overflow-y: auto; /* 垂直滾動 */
+    height: 100%;
+    margin: 0; /* 避免瀏覽器默認邊距影響 */
+}
+/* 類別區域 */
+.category-section {
+    margin-top: 120px; /* 與導航欄距離 */
+    padding: 0 20px;
+}
+
+/* 類別標題 */
+.category-title {
+    font-size: 32px;
+    color: #9b4e00;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 風格區域 */
+.style-section {
+    margin-bottom: 50px;
+}
+
+/* 風格標題 */
+.style-title {
+    font-size: 24px;
+    color: #df0303;
+    margin-bottom: 20px;
+}
+
+/* 商品網格 */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 適配不同螢幕 */
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* 單個商品卡片 */
+.product-card {
+    background-color: #ffe4c7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 商品圖片 */
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* 商品名稱 */
+.product-name {
+    font-size: 18px;
+    color: #9b4e00;
+    margin-bottom: 8px;
+}
+
+/* 商品價格 */
+.product-price {
+    font-size: 16px;
+    color: #007bff;
+    margin-bottom: 8px;
 }
